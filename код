@@ -1,0 +1,41 @@
+import random
+import string
+import tkinter as tk
+
+def generate_password(n=6):
+    print("Добро пожаловать в генератор надёжных паролей)")
+    m = 0
+    password = ""
+    while m != n:
+        c = random.randint(0,9)
+        b = random.choice(string.ascii_letters)
+        v = random.choice([str(c), b])
+        password = password + v
+        m = m + 1
+    print(f"Ваш новый надёжный пароль: {password} ")
+    text.delete("1.0", tk.END)
+    text.insert("1.0", password)
+    return password
+
+window = tk.Tk()
+window.title("Генератор твоих поролей <3")
+window.geometry("800x600")
+window.config(background="thistle3")
+
+text = tk.Text(
+    font=("Comic Sans MS", 34, "bold"),
+    height=1,
+    width=10
+)
+text.pack(expand=1)
+
+bottom = tk.Button(
+    text = "СГЕНЕРИРОВАТЬ",
+    command = lambda: generate_password(),
+    font =("arial", 20),
+    bg = "green",
+    fg = "white"
+)
+bottom.pack(expand=1)
+
+window.mainloop()
